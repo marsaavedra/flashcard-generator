@@ -4,16 +4,18 @@ var inquirer = require("inquirer");
 
 //importing both of my flashcards
 //var BasicCard = require('./basicCard.js');
-//var BasicCard = require('./basicCard.js');
-var firstPresident = require('./basicCard.js');
-var secondPresident = require('./basicCard.js');
+var BasicCard = require('./basicCard.js');
+
 var ClozeCard = require('./clozecard.js');
+
+console.log("firstPresident:", BasicCard.firstPresident);
+console.log("secondPresident:", BasicCard.secondPresident);
 //end of importation
 
 // runs inquirer and asks the user a series of questions whose replies are
 // stored within the variable answers inside of the .then statement
 
-//create an array to store user inputs 
+////create an array to store user inputs 
 var basicAnswer = [];
 var clozeAnswer = [];
 var loop = 0;
@@ -25,7 +27,7 @@ var getCards = function (loop) {
           {
             type: "input",
             name: "basic",
-            message: firstPresident.front,
+            message: BasicCard.firstPresident.front,
             filter: function (str) {
                 return str.toLowerCase();
             },
@@ -38,10 +40,10 @@ var getCards = function (loop) {
         //console.log(answer.basic); this shows the user input
         //console.log(firstPresident.back); this shows the answer
 
-                if(answer.basic === firstPresident.back) {
+                if(answer.basic === BasicCard.firstPresident.back) {
                 console.log("Correct");
                 }else{
-                console.log("Incorrect, Correct answer: " + firstPresident.back);
+                console.log("Incorrect, Correct answer: " + BasicCard.firstPresident.back);
                 }
                 loop++;
                 getCards(loop);
@@ -54,7 +56,7 @@ var getCards = function (loop) {
                   {
                     type: "input",
                     name: "basic",
-                    message: secondPresident.front,
+                    message: BasicCard.secondPresident.front,
                     filter: function (str) {
                         return str.toLowerCase();
                     },
@@ -67,10 +69,10 @@ var getCards = function (loop) {
                 //console.log(answer.basic); this shows the user input
                 //console.log(firstPresident.back); this shows the answer
 
-                    if(answer.basic === secondPresident.back) {
+                    if(answer.basic === BasicCard.secondPresident.back) {
                         console.log("Correct");
                     }else{
-                  console.log("Incorrect, Correct answer: " + secondPresident.back);
+                  console.log("Incorrect, Correct answer: " + BasicCard.secondPresident.back);
                     }
                     loop++;
                     getCards(loop);
