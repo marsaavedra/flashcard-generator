@@ -3,18 +3,21 @@
 function ClozeCard(fullText, cloze) {
   this.fullText = fullText;
   this.cloze = cloze;
-    this.partial = function () {
-        this.fullText.replace(this.cloze, "[Answer]");
-    }
 };
 
-var firstPresidentCloze = new ClozeCard(
-    "George Washington was the first president of the United States.", "George Washington");
-// "George Washington"
-//console.log(firstPresidentCloze.cloze); 
+ClozeCard.prototype.partial = function () {
+    console.log(this.fullText.replace(this.cloze, "..."));
+};
+
+var theSun = new ClozeCard("The Sun is 93 million miles away from Earth", "93 million");
+var jupiter = new ClozeCard("jupiter is the largest planet in our solar system", "jupiter");
 
 // " ... was the first president of the United States.
-firstPresidentCloze.partial(); 
+theSun.partial();
+jupiter.partial();
+
+
+
 
 // "George Washington was the first president of the United States.
 //console.log(firstPresidentCloze.fullText);
