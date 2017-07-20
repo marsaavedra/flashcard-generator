@@ -13,10 +13,10 @@ var firstPresident = new BasicCard(
 var secondPresident = new BasicCard (
     "Who was the second president of the United States? ", "john adams");
 //objects from cloze
-var theSun = new ClozeCard("The Sun is 93 million miles away from Earth", "93 million");
+var theSun = new ClozeCard("The Sun is 93 million miles away from Earth", "93");
 var jupiter = new ClozeCard("jupiter is the largest planet in our solar system", "jupiter");
 
-//calling the cloze options
+//calling the cloze partial texts
 var partialSun = theSun.partial();
 var partialJupiter = jupiter.partial();
 
@@ -48,7 +48,7 @@ var getCards = function (loop) {
                 if(answer.basic === firstPresident.back) {
                 console.log("Correct");
                 }else{
-                console.log("Incorrect, Correct answer: " + firstPresident.back);
+                console.log(answer.basic +" is incorrect, the correct answer is " + firstPresident.back);
                 }
                 loop++;
                 getCards(loop);
@@ -77,7 +77,7 @@ var getCards = function (loop) {
                     if(answer.basic === secondPresident.back) {
                         console.log("Correct");
                     }else{
-                  console.log("Incorrect, Correct answer: " + secondPresident.back);
+                  console.log(answer.basic +" is incorrect, the correct answer is " + secondPresident.back);
                     }
                     loop++;
                     getCards(loop);
@@ -105,12 +105,13 @@ var getCards = function (loop) {
                     if(answer.basic === theSun.cloze) {
                         console.log("Correct");
                     }else{
-                  console.log("Incorrect, Correct answer: " + theSun.cloze);
+                  console.log(answer.basic + " does not appear in the sentence, the correct answer is " + theSun.cloze);
                     }
                     loop++;
                     getCards(loop);
                 })
         };//end of loop
+
     
     if(loop>=3 && loop<4) {
 
@@ -134,7 +135,7 @@ var getCards = function (loop) {
                     if(answer.basic === jupiter.cloze) {
                         console.log("Correct");
                     }else{
-                  console.log("Incorrect, Correct answer: " + jupiter.cloze);
+                  console.log(answer.basic + " does not appear in the sentence, the correct answer is " + jupiter.cloze);
                     }
                     loop++;
                     getCards(loop);
