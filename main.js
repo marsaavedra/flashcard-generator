@@ -17,8 +17,8 @@ var theSun = new ClozeCard("The Sun is 93 million miles away from Earth", "93 mi
 var jupiter = new ClozeCard("jupiter is the largest planet in our solar system", "jupiter");
 
 //calling the cloze options
-theSun.partial();
-jupiter.partial();
+var partialSun = theSun.partial();
+var parialJupiter = jupiter.partial();
 
 //console.log("Sun:", theSun);
 //console.log("first prez: ",firstPresident );
@@ -83,7 +83,37 @@ var getCards = function (loop) {
                     loop++;
                     getCards(loop);
                 })
-        };
+        };//end of loop
+    if(loop>=2 && loop<3) {
+
+                inquirer.prompt([
+                  {
+                    type: "input",
+                    name: "basic",
+                    message: partialSun,
+                    filter: function (str) {
+                        return str.toLowerCase();
+                    },
+                    validate: function validateStr (str) {
+                        return str != ''; //make sure user puts in an anwser 
+                    }
+                  }
+                ]).then(function(answer) {
+                //    basicAnswer.push(answer.basic);
+                //console.log(answer.basic); this shows the user input
+                //console.log(firstPresident.back); this shows the answer
+
+                    if(answer.basic === theSun.cloze) {
+                        console.log("Correct");
+                    }else{
+                  console.log("Incorrect, Correct answer: " + theSun.cloze);
+                    }
+                    loop++;
+                    getCards(loop);
+                })
+        };//end of loop
+    
+    
 };//end of getCard loop
 
 getCards(loop);
