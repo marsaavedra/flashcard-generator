@@ -6,7 +6,7 @@ function ClozeCard(fullText, cloze) {
 };
 
 ClozeCard.prototype.partial = function () {
-    this.fullText.replace(this.cloze, "...");
+    return this.fullText.replace(this.cloze, "...");
 };
  
 

@@ -18,10 +18,9 @@ var jupiter = new ClozeCard("jupiter is the largest planet in our solar system",
 
 //calling the cloze options
 var partialSun = theSun.partial();
-var parialJupiter = jupiter.partial();
+var partialJupiter = jupiter.partial();
 
-//console.log("Sun:", theSun);
-//console.log("first prez: ",firstPresident );
+//console.log("test: ", partialSun);
 
 //the loop will be used to display the cards right after the other and not all at the same time.
 var loop = 0;
@@ -107,6 +106,35 @@ var getCards = function (loop) {
                         console.log("Correct");
                     }else{
                   console.log("Incorrect, Correct answer: " + theSun.cloze);
+                    }
+                    loop++;
+                    getCards(loop);
+                })
+        };//end of loop
+    
+    if(loop>=3 && loop<4) {
+
+                inquirer.prompt([
+                  {
+                    type: "input",
+                    name: "basic",
+                    message: partialJupiter,
+                    filter: function (str) {
+                        return str.toLowerCase();
+                    },
+                    validate: function validateStr (str) {
+                        return str != ''; //make sure user puts in an anwser 
+                    }
+                  }
+                ]).then(function(answer) {
+                //    basicAnswer.push(answer.basic);
+                //console.log(answer.basic); this shows the user input
+                //console.log(firstPresident.back); this shows the answer
+
+                    if(answer.basic === jupiter.cloze) {
+                        console.log("Correct");
+                    }else{
+                  console.log("Incorrect, Correct answer: " + jupiter.cloze);
                     }
                     loop++;
                     getCards(loop);
